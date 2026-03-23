@@ -182,9 +182,13 @@
 
     const music = document.getElementById("bg-music");
     if (music) {
-        music.volume = 0.5; //volume 50%
-        music.play().catch(() => {
-            console.log("autoplay bloqué");
+        music.play().then(() => {
+          setTimeout(() => {
+            music.muted = false;
+            music.volume = 0.5; //volume 50%
+          }, 200);
+        }).catch(() => {
+          console.log("autoplay bloqué");
         });
     }
   });      
